@@ -1,5 +1,6 @@
 const hapiAuthCookie = require('@hapi/cookie');
 const { getDocument } = require('../database/crudFunctions');
+const { addUser } = require('../handlers/handlerUsers');
 const { unHashPwd } = require('../helpers/pwdFunctions');
 
 module.exports = [
@@ -13,6 +14,14 @@ module.exports = [
     method: 'GET',
     path: '/login',
     handler: (request, h) => h.response({ message: 'enter valid credentials' }),
+    options: {
+      auth: false,
+    },
+  },
+  {
+    method: 'GET',
+    path: '/register',
+    handler: addUser,
     options: {
       auth: false,
     },

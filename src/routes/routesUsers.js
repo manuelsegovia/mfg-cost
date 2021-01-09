@@ -15,5 +15,8 @@ module.exports = [
     method: 'POST',
     path: '/api/v1/users',
     handler: addUser,
+    options: {
+      auth: false,
+    },
   },
 ];
