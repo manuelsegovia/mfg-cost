@@ -19,7 +19,7 @@ module.exports = [
     },
   },
   {
-    method: 'GET',
+    method: 'POST',
     path: '/register',
     handler: addUser,
     options: {
