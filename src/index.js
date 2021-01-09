@@ -8,7 +8,11 @@ const init = async () => {
   await server.register(allPlugins);
   server.auth.strategy('session', 'cookie', authOptions);
   server.auth.default('session');
-  server.route(allRoutes);
+  server.route(allRoutes, {
+    options: {
+      cors: true,
+    },
+  });
   await server.start();
   console.log('Server running on %s', server.info.uri);
 };
