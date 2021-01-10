@@ -3,18 +3,11 @@ const authOptions = require('./options/authOptions');
 
 const allPlugins = require('./plugins/allPlugins');
 const allRoutes = require('./routes/allRoutes');
+const viewOptions = require('../client/options/viewOptions');
 
 const init = async () => {
   await server.register(allPlugins);
-  server.views({
-    engines: {
-      hbs: require('handlebars'),
-    },
-    layout: true,
-    relativeTo: '/Users/manuelsegovia/DEVELOPER2/mfg-cost/client/',
-    path: 'templates',
-    layoutPath: 'templates',
-  });
+  server.views(viewOptions);
   server.auth.strategy('session', 'cookie', authOptions);
   server.auth.default('session');
   server.route(allRoutes, {
