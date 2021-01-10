@@ -11,6 +11,7 @@ const init = async () => {
   server.route(allRoutes, {
     options: {
       cors: true,
+      credentials: true,
     },
   });
   await server.start();
