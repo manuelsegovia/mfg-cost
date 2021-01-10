@@ -7,7 +7,8 @@ module.exports = [
     method: 'GET',
     path: '/',
     handler: (request, h) =>
-      h.response({ message: 'enter valid login credentials' }),
+      // h.response({ message: 'enter valid login credentials'
+      h.view('index'),
   },
   {
     method: 'GET',
