@@ -10,13 +10,15 @@ const init = async () => {
   server.views(viewOptions);
   server.auth.strategy('session', 'cookie', authOptions);
   server.auth.default('session');
-  server.route(allRoutes, {
-    options: {
-      cors: true,
-      // credentials: true,
-      // origin: '*',
-    },
-  });
+  server.route(
+    allRoutes // {
+    //   options: {
+    //     cors: true,
+    //     // credentials: true,
+    //     // origin: '*',
+    //   },
+    // }
+  );
   await server.start();
   console.log('Server running on %s', server.info.uri);
 };
