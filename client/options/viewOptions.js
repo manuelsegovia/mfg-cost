@@ -4,6 +4,7 @@ module.exports = {
   },
   layout: true,
   relativeTo: `client`,
+  isCached: false,
   path: 'templates',
   layoutPath: 'templates',
 };

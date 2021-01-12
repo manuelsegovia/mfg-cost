@@ -9,6 +9,9 @@ module.exports = [
     handler: (request, h) =>
       // h.response({ message: 'enter valid login credentials'
       h.view('index'),
+    options: {
+      auth: false,
+    },
   },
   {
     method: 'GET',

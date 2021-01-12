@@ -1,14 +1,13 @@
 const auth = require('./auth');
+const clientRoutes = require('./clientRoutes');
 const routesMfgParts = require('./routesMfgParts');
 const routesUsers = require('./routesUsers');
+const client = require('../../client/routes/clientUsersRoutes');
 
 module.exports = [
-  // {
-  //   method: 'GET',
-  //   path: '/',
-  //   handler: (request, h) => h.response({ message: 'THIS IS / HOME' }),
-  // },
   ...routesMfgParts,
   ...routesUsers,
   ...auth,
+  ...clientRoutes,
+  ...client,
 ];

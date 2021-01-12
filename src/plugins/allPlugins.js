@@ -9,6 +9,9 @@ module.exports = [
   {
     plugin: require('@hapi/cookie'),
   },
+  {
+    plugin: require('@hapi/inert'),
+  },
 ];
 
 // {

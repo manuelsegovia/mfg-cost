@@ -1,11 +1,28 @@
-<h1>Login Form Materialize</h1>
+<div class="row">
+  <div class="card small indigo">
+    <div class="card-content">
+      <form action=" /login" method="POST" class="col s12 ">
+        <div class="row">
+          <div class="input-field  col s12">
+            <i class="material-icons prefix">person</i>
+            <input type="text" name="userId">
 
-<h4>{{message}}</h4>
+            <label for="userId" name="userId">User Id:</label>
+          </div>
+          <div class="input-field col s12">
+            <i class="material-icons prefix">lock</i>
+            <input type="text" name="password">
+            <label for="password" name="password">Password:</label>
+          </div>
+          <div class="col s12">
+            <button type="submit" class=btn "waves-effect waves-light">Submit<i class="material-icons right">send</i>
+            </button>
+          </div>
+        </div>
 
-<form action="/login" method="POST">
-  <label for="userId" name="userId">User Id:</label>
-  <input type="text" name="userId">
-  <label for="password" name="password">Password:</label>
-  <input type="text" name="password">
-  <button type="submit">Login</button>
-</form>
+      </form>
+    </div>
+
+  </div>
+
+</div>

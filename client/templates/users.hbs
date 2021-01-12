@@ -1,0 +1,12 @@
+<h1>Aqui va la lista de users</h1>
+<ul class="collection">
+  {{#each users}}
+  <li class="collection-item avatar">
+    <i class="material-icons circle red">person</i>
+    <span class="title">Id: {{userId}}</span>
+    <p>Role de - {{tipo}} </p>
+    <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
+  </li>
+
+  {{/each}}
+</ul>

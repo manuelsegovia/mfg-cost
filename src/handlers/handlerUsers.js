@@ -9,16 +9,21 @@ const { encriptedPwd } = require('../helpers/pwdFunctions');
 const DB_COL = 'users';
 
 const getAllUsers = async (request, h) => {
-  const users = await getAllDocuments(request, DB_COL);
-  console.log(typeof users);
-  console.log(users);
-  const listUsers = users.map((item) => {
-    const container = {};
-    container.userId = item.userId;
-    container.tipo = item.tipoUsuario;
-    return container;
-  });
-  return h.response(listUsers).code(200);
+  try {
+    const users = await getAllDocuments(request, DB_COL);
+    // console.log(typeof users);
+    // console.log(users);
+    const listUsers = users.map((item) => {
+      const container = {};
+      container.userId = item.userId;
+      container.tipo = item.tipoUsuario;
+      return container;
+    });
+    const res = { data: listUsers };
+    return h.response(res).code(200);
+  } catch (error) {
+    return h.response({ message: 'sepa la madre' });
+  }
 };
 
 const getUser = async (request, h) => {
