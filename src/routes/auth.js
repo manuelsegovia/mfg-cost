@@ -39,14 +39,14 @@ module.exports = [
       console.log(account);
 
       if (!account || !(await unHashPwd(password, account.password))) {
-        return h.response({ message: 'invalid credentials' });
+        return h.view('login', { message: 'invalid credentials' });
       }
       console.log(await unHashPwd(password, account.password));
       console.log(account);
 
       request.cookieAuth.set({ id: account.userId });
 
-      return h.response({ message: 'success login' });
+      return h.view('index', { message: `${account.userId} esta autorizado` });
     },
     options: {
       auth: {
@@ -59,7 +59,7 @@ module.exports = [
     path: '/logout',
     handler: (request, h) => {
       request.cookieAuth.clear();
-      return h.response({ message: 'logout succesfull' });
+      return h.view('index');
     },
   },
 ];
