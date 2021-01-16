@@ -9,6 +9,15 @@ const server = Hapi.server({
       relativeTo: Path.resolve('client', 'public'),
     },
     cors: true,
+    // validate: {
+    //   options: {
+    //     abortEarly: false,
+    //   },
+    //   failAction: async (request, h, error) =>
+    //     error.isJoi
+    //       ? h.response(error.details).takeover()
+    //       : h.response(error).takeover(),
+    // },
   },
 });
 

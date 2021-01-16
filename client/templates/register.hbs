@@ -1,8 +1,66 @@
-<h1>new User</h1>
-<form>
-  <label for="userId" name="userId">User Id:</label>
-  <input type="text" name="userId">
-  <label for="password" name="password">Password:</label>
-  <input type="text" name="password">
-  <button type="submit">Register</button>
-</form>
+<div class="row">
+  <div class="switch">
+    <label>
+      Login
+      <input id="myLogin" type="checkbox" value="Login">
+      <span class="lever"></span>
+      Register
+    </label>
+  </div>
+
+  <form action=" /login" method="POST" class="col s12 ">
+
+    <div class="row">
+      <div class="input-field  col s12">
+        <i class="material-icons prefix">person</i>
+        <input type="text" name="userId" autofocus>
+        <label for="userId" name="userId">User Id:</label>
+      </div>
+      <div id="toHide" class="input-field  col s12 hide ">
+        <i class="material-icons prefix">email</i>
+        <input type="email" name="email">
+        <label for="email" name="email">email</label>
+      </div>
+      <div class="input-field col s12">
+        <i class="material-icons prefix">lock</i>
+        <input type="text" name="password">
+        <label for="password" name="password">Password:</label>
+      </div>
+      <div class="col s12">
+        <button class=btn "waves-effect waves-light">Submit<i class="material-icons right">send</i>
+        </button>
+      </div>
+    </div>
+
+  </form>
+  {{#if errors}}
+  <ul class="collection with-header ">
+    <li class="collection-header red lighten-2 ">
+      <h4>Apendejamientos:</h4>
+    </li>
+    {{#each errors}}
+    <li class="collection-item red lighten-2">
+      <h6>{{message}}</h6>
+    </li>
+    {{/each}}
+  </ul>
+  {{/if}}
+</div>
+<script>
+
+  const logSwitch = document.querySelector('#myLogin');
+  const toHide = document.querySelector('#toHide');
+  const mainForm = document.querySelector('form');
+  logSwitch.addEventListener('click', () => {
+    console.log(toHide.classList.contains('hide'));
+    if (!toHide.classList.contains('hide')) {
+      toHide.classList.add('hide');
+      mainForm.actionn = '/register'
+    } else {
+      toHide.classList.remove('hide');
+      mainForm.action = '/login'
+    }
+
+  })
+
+</script>
