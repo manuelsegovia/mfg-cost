@@ -7,10 +7,10 @@ const errorHandler = (request, h) => {
   }
 
   if (request.route.path === '/register' && request.route.method === 'post') {
-    console.log(request.route.path, request.route.method);
-    console.log(response.details);
-
-    return h.view('register', { errors: response.details });
+    return h.view('login', { errors: response.details });
+  }
+  if (request.route.path === '/login' && request.route.method === 'post') {
+    return h.view('login', { errors: response.details });
   }
   return h.continue;
 };

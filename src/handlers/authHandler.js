@@ -3,15 +3,12 @@ const { getDocument } = require('../database/crudFunctions');
 
 const loginHandler = async (request, h) => {
   const { userId, password } = request.payload;
-  console.log(userId, password);
   const account = await getDocument(request, 'users', { userId });
-  console.log(account);
 
   if (!account || !(await unHashPwd(password, account.password))) {
-    return h.view('login', { message: 'invalid credentials' });
+    const errors = [{ message: 'invalid credentials' }];
+    return h.view('login', { errors });
   }
-  console.log(await unHashPwd(password, account.password));
-  console.log(account);
 
   request.cookieAuth.set({ id: account.userId });
 

@@ -15,7 +15,6 @@ const usersList = async (request, h) => {
       container.tipo = item.tipoUsuario;
       return container;
     });
-    console.log(listUsers);
     return h.view('users', { users: listUsers });
   } catch (error) {
     return h.view('users', { message: 'valiendo...' });
@@ -24,14 +23,12 @@ const usersList = async (request, h) => {
 const registerUSer = async (request, h) => {
   const user = { ...request.payload };
   user.tipoUsuario = 'veTuAsaber';
-  console.log(user);
   user.password = await encriptedPwd(user.password);
-  console.log(user);
   try {
     const savedUser = await saveDocument(request, DB_COL, user);
     request.cookieAuth.set({ id: `${savedUser.ops[0].userId}` });
     return h.view('index', {
-      message: `registrado ${savedUser.ops[0].userId}`,
+      message: ` ${savedUser.ops[0].userId} se registro`,
     });
   } catch (error) {
     return error.code === 11000
@@ -44,9 +41,3 @@ module.exports = {
   usersList,
   registerUSer,
 };
-
-// try {
-//   usersList()
-// } catch (ex) {
-//   console.log(ex)
-// }

@@ -1,7 +1,5 @@
-const { getDocument } = require('../database/crudFunctions');
-const { addUser } = require('../handlers/handlerUsers');
-const { unHashPwd } = require('../helpers/pwdFunctions');
 const { loginHandler } = require('../handlers/authHandler');
+const { loginSchema } = require('../schemas/userSchema');
 
 module.exports = [
   {
@@ -30,6 +28,16 @@ module.exports = [
     options: {
       auth: {
         mode: 'try',
+      },
+      validate: {
+        options: {
+          abortEarly: false,
+          allowUnknown: true,
+        },
+        payload: loginSchema,
+        failAction: (request, h, err) => {
+          throw err;
+        },
       },
     },
   },

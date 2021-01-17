@@ -13,25 +13,10 @@ const init = async () => {
   server.auth.strategy('session', 'cookie', authOptions);
   server.auth.default('session');
   server.ext('onPreResponse', errorHandler);
-  // server.ext('onPreResponse', (request, h) => {
-  //   const { response } = request;
-  //   console.log(response);
-  //   console.log(response.isBoom);
-  //   if (!response.isBoom) {
-  //     console.log('insideIf', response.isBoom);
-  //     return h.continue;
-  //   }
 
-  //   if (request.route.path === '/register' && request.route.method === 'post') {
-  //     console.log(request.route.path, request.route.method);
-  //     return h.view('register', { error: 'new registerError' });
-  //   }
-  //   return h.continue;
-  // });
   server.route(allRoutes);
 
   await server.start();
-  console.log(__dirname);
   console.log('Server running on %s', server.info.uri);
 };
 
@@ -41,11 +26,3 @@ process.on('unhandledRejection', (err) => {
 });
 
 init();
-
-// {
-//   options: {
-//     cors: true,
-//     // credentials: true,
-//     // origin: '*',
-//   },
-// }
